@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Hexo">
-    <meta name="description" content="">
+    <meta name="description" content="Hexo">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,9 +13,6 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-
-
     <title>Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
@@ -26,16 +23,16 @@
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-
+    
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    
 <meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
     <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
+        <div id="navContainer" class="nav-wrapper head-container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
@@ -133,7 +130,6 @@
   </li>
 </ul>
 
-
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
@@ -213,7 +209,7 @@
 			
 			    <i class="fa-fw fas fa-comments"></i>
 			
-			留言板
+			Contact
 		</a>
           
         </li>
@@ -239,7 +235,6 @@
         
     </ul>
 </div>
-
 
         </div>
 
@@ -337,7 +332,7 @@
     }
 
     .carousel-control:hover {
-        background-color: rgba(0, 0, 0, .4);
+        background-color:rgba(0, 0, 0, .4);
     }
 
     .carousel-control i {
@@ -358,13 +353,24 @@
         <div class="brand">
             <div class="title center-align">
                 
-                    subtitle
+                subtitle
                 
             </div>
 
             <div class="description center-align">
                 
-                    
+                <span id="subtitle"></span>
+                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: ['从来没有真正的绝境, 只有心灵的迷途','Never really desperate, only the lost of the soul'],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: true
+                    });
+                </script>
                 
             </div>
         </div>
@@ -374,7 +380,7 @@
 
 <script>
     // 每天切换 banner 图.  Switch banner image every day.
-    $('.bg-cover').css('background-image', 'url(/medias/banner/5.jpg)');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
 </script>
 
 
@@ -431,37 +437,16 @@
 <script>
     $(function () {
         let coverSlider = $('.carousel');
-
-        //用户触摸轮播自动 restartPlay 是否生效
-        let initUserPressedOrDraggedActive = false
-
-        //用户触摸轮播自动 restartPlay
-        function initUserPressedOrDragged(instance) {
-            setInterval(() => {
-                if (instance.pressed || instance.dragged) {
-                    // console.log('initUserPressedOrDragged: ',instance.pressed,instance.dragged)
-                    restartPlay()
-                }
-            }, 1000)
-        }
-
         coverSlider.carousel({
             duration: Number('120'),
             fullWidth: true,
-            indicators: 'true' === 'true',
-            onCycleTo() {
-                if (!initUserPressedOrDraggedActive) {
-                    // console.log('initUserPressedOrDraggedActive')
-                    initUserPressedOrDragged(this)
-                    initUserPressedOrDraggedActive = true
-                }
-            },
-        })
+            indicators: 'true' === 'true'
+        });
 
         let carouselIntervalId;
         
         // Loop to call the next cover article picture.
-        let autoCarousel = function () {
+        let autoCarousel = function() {
             carouselIntervalId = setInterval(function () {
                 coverSlider.carousel('next');
             }, 5000);
@@ -469,7 +454,7 @@
         autoCarousel();
         
 
-        function restartPlay() {
+        let restartPlay = function () {
             
             clearInterval(carouselIntervalId);
             autoCarousel();
@@ -503,16 +488,15 @@
                         <div class="dream">
     
     <div class="title center-align">
-        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;My Space
+        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;我的梦想
     </div>
     
     <div class="row">
         <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
-            最好的学习方法不是将知识藏在心里，而是学会了再用自己的语言描述一遍简化其概念，并讲授这个概念給别人。——费曼学习法
+            不是每个人都应该像我这样去建造一座水晶大教堂，但是每个人都应该拥有自己的梦想，设计自己的梦想，追求自己的梦想，实现自己的梦想。梦想是生命的灵魂，是心灵的灯塔，是引导人走向成功的信仰。有了崇高的梦想，只要矢志不渝地追求，梦想就会成为现实，奋斗就会变成壮举，生命就会创造奇迹。——罗伯·舒乐
         </div>
     </div>
 </div>
-
                     
 
                     
@@ -531,6 +515,8 @@
             </div>
         </div>
     </div>
+    
+
     
 
     
@@ -583,55 +569,6 @@
 
 
     <footer class="page-footer bg-color">
-    
-        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        font-size: 15px;
-        color: #42b983;
-    }
-
-    
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
-</style>
-<div class="">
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="song"
-                   id="366525341"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
-</div>
-
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-
-    
     <div class="container row center-align" style="margin-bottom: 0px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -715,10 +652,9 @@
 <script src="/js/search.js"></script>
 <script type="text/javascript">
 $(function () {
-    searchFunc("/search.xml", 'searchInput', 'searchResult');
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
 });
 </script>
-
     <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
@@ -733,6 +669,9 @@ $(function () {
     <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
     <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
     <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
 
     <!-- Baidu Analytics -->
 
@@ -768,7 +707,7 @@ $(function () {
     
 
     
-
+    
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
